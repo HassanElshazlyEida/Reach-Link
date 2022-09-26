@@ -19,12 +19,15 @@ use App\Http\Controllers\Api\Auth\RegisterController;
 |
 */
 
-Route::group(['middleware' => 'auth:sanctum','namespace'=>'api'], function () {
-    Route::get('user', [UserController::class,'index']);
-});
-Route::group(['prefix' => 'auth','namespace'=>'api'], function () {
+Route::group(['namespace'=>'api'], function () {
+
     Route::post("login",[LoginController::class,'login']);
     Route::post("register",[RegisterController::class,'register']);
 
-});
+    Route::group(['middleware' => 'auth:sanctum'], function () {
+        Route::get('user', [UserController::class,'index']);
+    });
 
+
+
+});

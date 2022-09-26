@@ -5,7 +5,7 @@ use App\Classes\Responseobject;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 
-trait GeneralTrait {
+trait GeneralApiTrait {
 
     public function failed($validator)
     {

@@ -6,10 +6,10 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use App\Traits\GeneralTrait;
+use App\Traits\GeneralApiTrait;
 class LoginController extends Controller
 {
-    use GeneralTrait;
+    use GeneralApiTrait;
     public function login(Request $request)
     {
 

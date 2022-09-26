@@ -3,18 +3,17 @@
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Models\User;
-use App\Traits\GeneralTrait;
+use App\Traits\GeneralApiTrait;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserForm;
 
 class RegisterController extends Controller
 {
-    use GeneralTrait;
-    public function register(Request $request)
+    use GeneralApiTrait;
+    public function register(UserForm $request)
     {
-        if (!$request->password || $request->email) {
-            return $this->errorField('Email or Password');
-        }
+
         $user = User::where('email', $request->email)->first();
         if ($user) {
             return $this->returnFailData('email_address_exist', true, __('This Email address is  used before'));
