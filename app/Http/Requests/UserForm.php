@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Http\Response;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\ValidationException;
 
 class UserForm extends FormRequest
 {
@@ -29,8 +31,9 @@ class UserForm extends FormRequest
             'password'          => 'required|string|min:8'
         ];
     }
-    public function response(array $errors)
+    protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
     {
-        return response()->json($errors, 422);
+        $response = new Response(['error' => $validator->errors()->first(),'status'=>false], 422);
+        throw new ValidationException($validator, $response);
     }
 }

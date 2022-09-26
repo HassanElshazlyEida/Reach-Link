@@ -13,7 +13,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
 
-        if (!$request->password || $request->email) {
+        if (!$request->password || !$request->email) {
             return $this->errorField('Email or Password');
         }
 
@@ -29,5 +29,8 @@ class LoginController extends Controller
         return $this->returnData('user', $data, __('Success login'));
 
     }
-
+    public function logout() {
+        auth()->user()->tokens()->delete();
+        return $this->returnSuccess("Logged out");
+    }
 }

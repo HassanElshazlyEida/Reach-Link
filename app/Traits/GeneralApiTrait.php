@@ -33,18 +33,7 @@ trait GeneralApiTrait {
             "status" => false
         ]);
     }
-    public function errorMessage($massage){
-        return response()->json([
-            "msg" => __($massage),
-            "status" => false
-        ]);
-    }
-    public function SuccessMessage($massage){
-        return response()->json([
-            "msg" => __($massage),
-            "status" => true
-        ]);
-    }
+
     public function returnSuccess($msg=""){
         return response()->json([
             'status'=>true,
@@ -52,11 +41,11 @@ trait GeneralApiTrait {
         ]);
     }
     public function returnData($key,$value,$msg="",array $extra=[]){
-        return $this->data($key,$value,$msg="",true,$extra);
+        return $this->data($key,$value,$msg,true,$extra);
     }
     public function returnFailData($key,$value,$msg="",array $extra=[]){
 
-        return $this->data($key,$value,$msg="",false,$extra);
+        return $this->data($key,$value,$msg,false,$extra);
     }
     public function data($key,$value,$msg="",$status,array $extra=[]){
 
