@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class UserSeeder extends Seeder
 {
@@ -13,10 +15,11 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::create([
-            'email'=> 'admin@gmail.com',
-            'password'=>bcrypt('password'),
+        User::create([
+            'email'=> env('ADMIN_EMAIL',"admin@gmail.com"),
+            'password'=>bcrypt(env('ADMIN_EMAIL','password')),
             'name'=>"Admin"
         ]);
+
     }
 }
