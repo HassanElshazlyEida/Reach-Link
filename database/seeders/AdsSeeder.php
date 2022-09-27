@@ -26,7 +26,9 @@ class AdsSeeder extends Seeder
             "type"=>'free',
             "category_id"=>Category::all()->random()->id,
             "advertiser_id"=>User::first()->id,
-            "start_date"=>$faker->dateTimeBetween('+0 days', '+3 days')
+            "start_date"=>$faker->dateTimeBetween('+0 days', '+3 days'),
+            "created_at"=>now(),
+            "updated_at"=>now(),
         ]);
     }
 }

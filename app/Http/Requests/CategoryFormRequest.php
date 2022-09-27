@@ -5,8 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Http\Requests\failedValidationTrait;
 
-
-class UserForm extends FormRequest
+class CategoryFormRequest extends FormRequest
 {
     use failedValidationTrait;
 
@@ -20,8 +19,7 @@ class UserForm extends FormRequest
     {
         return [
             'name'              => 'required|string|max:255',
-            'email'             => 'required|email|max:255|unique:users,email',
-            'password'          => 'required|string|min:8'
+            'content'           => 'required|min:3',
         ];
     }
 

@@ -7,7 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Ads extends Model
 {
-    protected $guarded=[];
+
+    protected $fillable = [
+        'title',
+        'description',
+        'type',
+        'category_id',
+        'advertiser_id',
+        'start_date'
+     ];
+
     protected $table="ads";
 
     protected $dates = ['start_date'];
