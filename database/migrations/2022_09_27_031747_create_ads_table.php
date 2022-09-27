@@ -30,7 +30,7 @@ class CreateAdsTable extends Migration
             ->references('id')->on('users')
             ->cascadeOnDelete();
 
-            $table->date("start_date");
+            $table->dateTime("start_date")->nullable();
 
             $table->timestamps();
         });
