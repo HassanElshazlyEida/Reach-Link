@@ -18,8 +18,10 @@ class RegisterController extends Controller
         if ($user) {
             return $this->returnError( __('This Email address is used before'));
         }
+        $validated=$request->validated();
+        $validated['password']=bcrypt($request->password);
 
-        $user = User::create($request->validated());
+        $user = User::create($validated);
         $token = $user->createToken('my-app-token')->plainTextToken;
         $data = [
             "token"             => $token,

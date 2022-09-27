@@ -18,11 +18,12 @@ use App\Http\Controllers\Api\Auth\RegisterController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post("/login",[LoginController::class,'login'])->name('login');
+Route::post("/register",[RegisterController::class,'register'])->name('register');
 
-Route::post("login",[LoginController::class,'login'])->name('login');
-Route::post("register",[RegisterController::class,'register'])->name('register');
 
-
-Route::group(['auth:sanctum'], function () {
-    Route::get('user', [UserController::class,'index']);
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/user', [UserController::class,'index']);
+    Route::post('/logout', [LoginController::class, 'logout']);
 });
+

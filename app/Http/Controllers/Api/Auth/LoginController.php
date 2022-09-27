@@ -19,7 +19,7 @@ class LoginController extends Controller
 
         $user = User::where('email', $request->email)->first();
         if (!$user or !Hash::check($request->password, $user->password)) {
-            return $this->errorMessage('Unauthorized');
+            return $this->returnError('Unauthorized');
         }
         $token = $user->createToken('my-app-token')->plainTextToken;
         $data=[
