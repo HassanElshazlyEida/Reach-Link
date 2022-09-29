@@ -64,7 +64,8 @@ These are the steps to get the app up and running. Once you're using the app, fe
     ```
   
 
-5. ##Download API [collection](/thunder-collection_ReachLink.json) for testing api-end points
+5. 
+## Download API [collection](/thunder-collection_ReachLink.json) for testing api-end points
 
 
 
