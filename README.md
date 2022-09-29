@@ -8,7 +8,7 @@
 </p>
 ### Requirements
 
-The boilerplate uses Laravel 8.83.24 . PHP 7.4 and 8.\* are supported.
+ Laravel 8.83.24 . PHP  8.1\* are supported.
 
 # Setting it up
 
@@ -18,7 +18,7 @@ These are the steps to get the app up and running. Once you're using the app, fe
 2. `composer install` (or `composer update` if you see errors related to your PHP version)
 3. Copy `.env.example` to `.env` and run `php artisan key:generate`
 4. Edit `.env`  configurations
-    1. First User
+    1. Create your first user by edit `.env`
 
     ```php
         ADMIN_EMAIL="admin@gmail.com"
@@ -51,7 +51,7 @@ These are the steps to get the app up and running. Once you're using the app, fe
         command_remind_advertisers="remind:advertisers"
       
     ```
-     5. Run this command
+     5. Run this command to send mail
      ```php
         php artisan remind:advertisers
       
@@ -61,11 +61,10 @@ These are the steps to get the app up and running. Once you're using the app, fe
     
      ```php
         ./vendor/bin/phpunit
-      
     ```
   
 
-5. Download API [collection](/thunder-collection_ReachLink.json) for testing api-end points
+5. ## Download API [collection](/thunder-collection_ReachLink.json) for testing api-end points
 
 
 
