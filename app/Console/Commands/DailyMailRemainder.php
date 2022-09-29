@@ -41,16 +41,17 @@ class DailyMailRemainder extends Command
     public function handle()
     {
 
-        $users=\App\Models\User::with('ad')->whereHas("ad",function($q) {
+        $users=\App\Models\User::with('ads')->whereHas("ads",function($q) {
             return $q->notReminder();
-        })->get()->pluck('ad.info','email')->toArray();
+        })->get();
 
         try{
-            foreach($users as $email=>$info){
-                Mail::to($email)->send(new MailDailyMailRemainder([
-                    "email"=>$email,
-                    "title"=>$info[0],
-                    "start_date"=>$info[1],
+            foreach($users as $user){
+
+                Mail::to($user->email)->send(new MailDailyMailRemainder([
+                    "email"=>$user->email,
+                    "name"=>$user->name,
+                    "ads"=>$user->ads,
                 ]));
             }
         }catch(Exception $e){

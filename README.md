@@ -6,6 +6,51 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
+### Requirements
+
+The boilerplate uses Laravel 8.83.24 . PHP 7.4 and 8.\* are supported.
+
+# Setting it up
+
+These are the steps to get the app up and running. Once you're using the app, feel free to change any individual parts.
+
+1. Clone the repository
+2. `composer install` (or `composer update` if you see errors related to your PHP version)
+3. Copy `.env.example` to `.env` and run `php artisan key:generate`
+4. Edit `.env`  configurations
+    1. First User
+
+    ```php
+        ADMIN_EMAIL="admin@gmail.com"
+        ADMIN_PASSWORD="password"
+
+    ```
+    2. Timezone && Schedule mail time
+
+    ```php
+        timezone='Africa/Cairo'
+        Schedule_Time='20:00'
+    ```
+    3. Mail trap credentials for testing 
+
+    ```php
+        MAIL_MAILER=smtp
+        MAIL_HOST=smtp.mailtrap.io
+        MAIL_PORT=465
+        MAIL_USERNAME={{your username}}
+        MAIL_PASSWORD={{your password}}
+        MAIL_ENCRYPTION=
+
+        MAIL_FROM_ADDRESS="{{your email}}"
+        MAIL_FROM_NAME="{{ your name}}"
+
+    ```
+    4. Test remind command for advertisers
+
+    ```php
+        command_remind_advertisers="remind:advertisers"
+    ```
+
 
 ## About Laravel
 

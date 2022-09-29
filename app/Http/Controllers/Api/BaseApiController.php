@@ -12,7 +12,7 @@ use App\Http\Requests\BaseFormRequest;
 abstract class BaseApiController extends Controller
 {
     use GeneralApiTrait;
-    // protected BaseFormRequest $validation;
+
 
     public function all($routeParams)
     {
@@ -34,15 +34,14 @@ abstract class BaseApiController extends Controller
 
     public function store(BaseFormRequest $request)
     {
-
         return response()->json($this->repository->create($request->validated()));
     }
 
 
-    public function update($id)
+    public function update($id,Request $request)
     {
-       
-        return response()->json($this->repository->update($request->validated(),$id));
+
+        return response()->json($this->repository->update($request->all(),$id));
     }
 
 

@@ -14,7 +14,7 @@ class AdsController extends Controller
 {
     public function __construct(AdsRepository $repository){
         $this->repository = $repository;
-        $this->repository->with('category','tag','advertiser');
+        $this->repository->with('category','tags','advertiser');
     }
     public function filter(AdsFilter $request){
 

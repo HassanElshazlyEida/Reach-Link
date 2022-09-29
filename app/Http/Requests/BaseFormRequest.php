@@ -7,10 +7,7 @@ use App\Http\Requests\failedValidationTrait;
 
 abstract class BaseFormRequest extends FormRequest
 {
-    // public function  __construct($id)
-    // {
 
-    // }
     use failedValidationTrait;
 
 

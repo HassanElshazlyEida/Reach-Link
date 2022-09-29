@@ -20,6 +20,7 @@ class AdsResource extends JsonResource
             "type"=>$this->type,
             "category"=>$this->category,
             "advertiser"=>$this->advertiser,
+            "tags"=>$this->tags,
         ];
     }
 }

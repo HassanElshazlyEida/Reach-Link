@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
             if($route== 'api/categories'){
                 return new CategoryFormRequest;
             } else if($route== 'api/tags'){
-                return new TagFormRequest();
+                return new TagFormRequest;
             }
 
         });

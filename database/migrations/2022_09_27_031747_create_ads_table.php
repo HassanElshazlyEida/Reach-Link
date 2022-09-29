@@ -25,7 +25,7 @@ class CreateAdsTable extends Migration
             ->references('id')->on('categories')
             ->nullOnDelete();
 
-            $table->unsignedBigInteger('advertiser_id')->unique();
+            $table->unsignedBigInteger('advertiser_id');
             $table->foreign('advertiser_id')
             ->references('id')->on('users')
             ->cascadeOnDelete();
