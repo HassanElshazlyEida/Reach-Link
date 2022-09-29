@@ -29,6 +29,8 @@ class DailyMailRemainder extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.mail_reminder');
+        return $this
+        ->from(env('MAIL_FROM_ADDRESS'))
+        ->markdown('emails.mail_reminder');
     }
 }

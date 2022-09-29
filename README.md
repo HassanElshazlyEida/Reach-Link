@@ -45,11 +45,28 @@ These are the steps to get the app up and running. Once you're using the app, fe
         MAIL_FROM_NAME="{{ your name}}"
 
     ```
-    4. Test remind command for advertisers
+    4. set command for remind the advertisers
 
     ```php
         command_remind_advertisers="remind:advertisers"
+      
     ```
+     5. Run this command
+     ```php
+        php artisan remind:advertisers
+      
+    ```
+5. 
+    Run Unit test to ensure that fake email was sent
+    
+     ```php
+        ./vendor/bin/phpunit
+      
+    ```
+  
+
+5. Download API [collection](/thunder-collection_ReachLink.json) for testing api-end points
+
 
 
 ## About Laravel

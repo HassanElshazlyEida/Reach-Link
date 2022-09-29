@@ -1,4 +1,4 @@
-@component('mail::message')
+{{-- @component('mail::message')
 # Introduction
 Hello {{$data['name']}} , <br>
 A gentle reminder that you have {{count($data['ads'])}} Advertisement in progress
@@ -12,4 +12,4 @@ A gentle reminder that you have {{count($data['ads'])}} Advertisement in progres
 @endcomponent
 
 Thanks,<br>
-@endcomponent
+@endcomponent --}}
