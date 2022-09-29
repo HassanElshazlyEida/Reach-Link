@@ -35,4 +35,13 @@ class Ads extends Model
             $this->start_date->format('m-d-Y , H:i A')
         ];
     }
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+    public function tags(){
+        return $this->hasMany(Tag::class,'ad_id');
+    }
+    public function advertiser(){
+        return $this->belongsTo(User::class);
+    }
 }

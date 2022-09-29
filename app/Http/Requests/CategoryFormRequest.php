@@ -2,19 +2,12 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
-use App\Http\Requests\failedValidationTrait;
+use App\Http\Requests\BaseFormRequest;
 
-class CategoryFormRequest extends FormRequest
+class CategoryFormRequest extends BaseFormRequest
 {
-    use failedValidationTrait;
 
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules()
     {
         return [

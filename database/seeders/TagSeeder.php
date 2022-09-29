@@ -19,7 +19,7 @@ class TagSeeder extends Seeder
         $faker = Faker::create();
         for ($i = 0; $i < 5; $i++) {
             DB::table('tags')->insert([
-                "title"=>$faker->title,
+                "title"=>$faker->name,
                 "ad_id"=>Ads::first()->id,
                 "created_at"=>now(),
                 "updated_at"=>now(),

@@ -3,15 +3,20 @@
 namespace App\Http\Controllers\Api;
 
 use Exception;
+use Illuminate\Http\Request;
+use App\Classes\Responseobject;
+use App\Traits\GeneralApiTrait;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\BaseFormRequest;
 
-
-abstract class BaseApiController
+abstract class BaseApiController extends Controller
 {
-
+    use GeneralApiTrait;
+    // protected BaseFormRequest $validation;
 
     public function all($routeParams)
     {
+
         return $this->repository->paginate();
     }
 
@@ -23,63 +28,32 @@ abstract class BaseApiController
 
     public function show($id)
     {
-        return response()->json($this->repository->find($id));
 
+        return response()->json($this->repository->find($id));
     }
 
     public function store(BaseFormRequest $request)
     {
-        
-        return response()->json($this->repository->create($request->all()));
+
+        return response()->json($this->repository->create($request->validated()));
     }
 
 
-    public function errorStore(Exception $e, $params = [])
+    public function update($id)
     {
-        return response()->json([
-            'error' => true,
-            'message' => $this->errorMessage($e),
-            'exception' => $e->getTrace(),
-        ]);
+       
+        return response()->json($this->repository->update($request->validated(),$id));
     }
 
 
-    public function update($response, $params = [])
+    public function destroy($id)
     {
-        $response['model'] = app($this
-            ->repository
-            ->presenter())
-            ->getTransformer()
-            ->transform($response['model']);
-        return response()->json($response);
+        $is_deleted=$this->repository->destroy($id);
+        if($is_deleted){
+            return $this->returnSuccess(__("Model has been deleted successfully"));
+        }else {
+            return $this->failed_response(Responseobject::status_failed,Responseobject::code_not_found,__("Not found"));
+        }
     }
 
-
-    public function errorUpdate(Exception $e, $params = [])
-    {
-        return response()->json([
-            'error' => true,
-            'message' => $this->errorMessage($e)
-        ]);
-    }
-
-
-    public function destroy($response, $params = [])
-    {
-        $response['model'] = app($this
-            ->repository
-            ->presenter())
-            ->getTransformer()
-            ->transform($response['model']);
-        return response()->json($response);
-    }
-
-
-    public function errorDestroy(Exception $e, $params = [])
-    {
-        return response()->json([
-            'error' => true,
-            'message' => $this->errorMessage($e)
-        ]);
-    }
 }

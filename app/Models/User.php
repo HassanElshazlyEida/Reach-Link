@@ -42,8 +42,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function ad(){
-        return $this->hasOne(Ads::class,'advertiser_id');
+    public function ads(){
+        return $this->hasMany(Ads::class,'advertiser_id');
     }
 
 }

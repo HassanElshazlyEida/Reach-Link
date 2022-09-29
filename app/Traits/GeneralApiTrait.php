@@ -20,6 +20,16 @@ trait GeneralApiTrait {
             $response
         );
     }
+    public function failed_response($status,$code,$msg)
+    {
+        $response   = new Responseobject();
+        $response->status = $status;
+        $response->code = $code;
+        $response->msg= $msg;
+        return Response::json(
+            $response
+        );
+    }
     public function returnError($msg){
         return response()->json([
             'status'=>false,
@@ -80,6 +90,14 @@ trait GeneralApiTrait {
     public function Validator($request, $rules, $niceNames = [])
     {
         return Validator::make($request->all(), $rules, [], $niceNames);
+    }
+    public function validated($request, $rules, $niceNames = []){
+        $valid=$this->Validator($request, $rules, $niceNames);
+        if($valid->fails()){
+            return $this->returnValidationError($valid);
+        }else {
+            return true;
+        }
     }
 
 }

@@ -5,8 +5,12 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Http\Requests\failedValidationTrait;
 
-class BaseFormRequest extends FormRequest
+abstract class BaseFormRequest extends FormRequest
 {
+    // public function  __construct($id)
+    // {
+
+    // }
     use failedValidationTrait;
 
 
@@ -15,9 +19,6 @@ class BaseFormRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
-    {
-        return [];
-    }
+    abstract public function rules();
 
 }

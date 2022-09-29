@@ -1,12 +1,11 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Api\AdsController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\Auth\UserController;
 use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\TagController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +22,10 @@ Route::post("/register",[RegisterController::class,'register'])->name('register'
 
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::get('/user', [UserController::class,'index']);
     Route::post('/logout', [LoginController::class, 'logout']);
 });
 
 Route::apiResource('/categories', CategoryController::class);
+Route::apiResource('/tags', TagController::class);
+Route::get('/ads/filter', [AdsController::class,'filter']);
+Route::get('/user/{advertiser}/ads', [AdsController::class,'advertiser']);

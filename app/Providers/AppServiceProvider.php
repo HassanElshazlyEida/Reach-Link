@@ -2,7 +2,11 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Requests\BaseFormRequest;
 use Illuminate\Support\ServiceProvider;
+use App\Http\Requests\CategoryFormRequest;
+use App\Http\Requests\TagFormRequest;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +17,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
+        $this->app->bind(BaseFormRequest::class,function($q){
+            $route=Route::current()->uri();
+            if($route== 'api/categories'){
+                return new CategoryFormRequest;
+            } else if($route== 'api/tags'){
+                return new TagFormRequest();
+            }
+
+        });
     }
 
     /**

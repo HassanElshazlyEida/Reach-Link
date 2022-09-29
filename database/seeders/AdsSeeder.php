@@ -21,7 +21,7 @@ class AdsSeeder extends Seeder
     {
         $faker = Faker::create();
         Ads::create([
-            "title"=>$faker->title,
+            "title"=>$faker->name,
             "description"=>$faker->sentence,
             "type"=>'free',
             "category_id"=>Category::all()->random()->id,

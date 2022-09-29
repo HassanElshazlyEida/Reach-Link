@@ -15,7 +15,7 @@ trait failedValidationTrait {
     public function authorize()
     {
         return true;
-}
+    }
     protected function failedValidation(\Illuminate\Contracts\Validation\Validator $validator)
     {
         $response = new Response(['error' => $validator->errors()->first(),'status'=>false], 422);
